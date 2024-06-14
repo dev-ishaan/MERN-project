@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 var UserSchema = new Schema({
     name:{
@@ -16,7 +17,7 @@ var UserSchema = new Schema({
     },
     date:{
         type: Date,
-        required: Date.now
+        default: Date.now
     }
   });
 
