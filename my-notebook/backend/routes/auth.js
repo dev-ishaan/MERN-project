@@ -56,4 +56,45 @@ router.post('/createuser',[
         }
 })
 
+// Creating user login : POST "/api/auth/login"
+router.post('/login', [
+  body('username', 'Username is required').not().isEmpty(),
+  body('password', 'Password is required').not().isEmpty()
+  ], async (req, res) => {
+    
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+      }
+
+      const {username, password} = req.body
+
+      try {
+        let user = await Users.findOne({username})
+        if(!user) {
+          return res.state(400).json({error: "Please try to login with correct credentials"})
+        }
+
+        const passwordCompare = await bcrypt.compare(password, user.password)
+        if(!passwordCompare){
+          return res.state(400).json({error: "Please try to login with correct credentials"})
+          }
+
+          // Using id of user to sign it into auth token
+          const data = {
+            user : {
+              id: user.id
+            }
+          }
+          // Adding JWTSecretKey to make it more secure
+          const authToken = jwt.sign(data, JWTSecretKey)
+
+          // res.json(user)
+          res.json({authToken})
+
+      } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+      }
+})
 module.exports = router
