@@ -1,6 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import noteContext from "../context/notes/NoteContext"
 
 const Home = () => {
+  const context = useContext(noteContext)
+  const {notes, setnotes} = context
   return (
     <div>
       <h3 className='my-4'>Add Notes</h3>
@@ -23,6 +26,9 @@ const Home = () => {
       </form>
       </div>
       <h3 className='my-4'>Your Notes</h3>
+      {notes.map((notes)=>{
+        return notes.title
+      })}
     </div>
   )
 }
