@@ -5,7 +5,7 @@ const NoteState = (props) =>{
 
 const notesInitial = [
     {
-      "_id": "66748018490f3f7196d1c312",
+      "_id": "6674801849230f3f7196d1c312",
       "user": "66707f56a8deb946e39260f1",
       "title": "1st Note",
       "description": "Hello note 1",
@@ -14,7 +14,7 @@ const notesInitial = [
       "__v": 0
     },
     {
-      "_id": "667b0aab887721c268209e78",
+      "_id": "667b0aab88714721c268209e78",
       "user": "66707f56a8deb946e39260f1",
       "title": "2st Note",
       "description": "Hello note 2",
@@ -23,7 +23,7 @@ const notesInitial = [
       "__v": 0
     },
     {
-      "_id": "667b0ab9887721c268209e7b",
+      "_id": "667b0ab9881217721c268209e7b",
       "user": "66707f56a8deb946e39260f1",
       "title": "3rd Note",
       "description": "Hello note 3",
@@ -32,7 +32,7 @@ const notesInitial = [
       "__v": 0
     },
     {
-      "_id": "667b0aab887721c268209e78",
+      "_id": "667b0aab88772651c268209e78",
       "user": "66707f56a8deb946e39260f1",
       "title": "2st Note",
       "description": "Hello note 2",
@@ -41,7 +41,7 @@ const notesInitial = [
       "__v": 0
     },
     {
-      "_id": "667b0aab887721c268209e78",
+      "_id": "667b0aab8877211234c268209e78",
       "user": "66707f56a8deb946e39260f1",
       "title": "2st Note",
       "description": "Hello note 2",
@@ -50,7 +50,7 @@ const notesInitial = [
       "__v": 0
     },
     {
-      "_id": "667b0aab887721c268209e78",
+      "_id": "667b0aab887726561c268209e78",
       "user": "66707f56a8deb946e39260f1",
       "title": "2st Note",
       "description": "Hello note 2",
@@ -59,7 +59,7 @@ const notesInitial = [
       "__v": 0
     },
     {
-      "_id": "667b0aab887721c268209e78",
+      "_id": "667b0aab88772871c268209e78",
       "user": "66707f56a8deb946e39260f1",
       "title": "2st Note",
       "description": "Hello note 2",

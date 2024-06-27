@@ -9,7 +9,8 @@ const Notes = () => {
     <div className="row">
       <h3 className="my-4">Your Notes</h3>
       {notes.map((notes) => {
-        return <NoteItem notes={notes}/>
+        // MongoDB fetch the id in for of "._id"
+        return <NoteItem key = {notes._id} notes={notes}/>
       })}
     </div>
   );
