@@ -85,12 +85,14 @@ const notesInitial = [
   }
 
   // Delete a note
-  const deleteNote = () =>{
-    
+  const deleteNote = (id) =>{
+    console.log("deleted the id " + id)
+    const newNotes = notes.filter((note)=>{return note._id!==id})
+    setnotes(newNotes)
   }
 
   //Edit a note
-  const editNote = () =>{
+  const editNote = (id, title, description, tag) =>{
     
   }
 

@@ -10,7 +10,7 @@ const Notes = () => {
     <>
     <Addnote/>
     <div className="row">
-      <h3 className="my-4">Your Notes</h3>
+      <h3 className="text-center my-4">Your Notes</h3>
       {notes.map((notes) => {
         // MongoDB fetch the id in for of "._id"
         return <NoteItem key = {notes._id} notes={notes}/>
