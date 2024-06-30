@@ -34,10 +34,12 @@ const notesInitial = []
       },
       body: JSON.stringify({title, description, tag}),
     });
+    const json = await response.json(); 
+    console.log(json)
 
     // Logic
     const note = {
-      "_id": "667b0aab8877282271c268209e7811",
+      "_id": "",
       "user": "66707f56a8deb946e39260f1",
       "title": title,
       "description": description,
@@ -59,7 +61,7 @@ const notesInitial = []
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY3MDdmNTZhOGRlYjk0NmUzOTI2MGYxIn0sImlhdCI6MTcxODY0ODY2Mn0.TuWniXCgmVt4FAPiI6sloSMI-VKAFlS-KqDTXQh1jo0"
       }
     });
-    const json = response.json(); 
+    const json = await response.json(); 
     console.log(json)
 
     // Logic
@@ -72,24 +74,28 @@ const notesInitial = []
   const editNote = async (id, title, description, tag) =>{
     // API calls
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY3MDdmNTZhOGRlYjk0NmUzOTI2MGYxIn0sImlhdCI6MTcxODY0ODY2Mn0.TuWniXCgmVt4FAPiI6sloSMI-VKAFlS-KqDTXQh1jo0"
       },
       body: JSON.stringify({title, description, tag}),
     });
-    const json = response.json(); 
+    const json = await response.json(); 
+    console.log(json)
 
+    let newNotes = JSON.parse(JSON.stringify(notes))
     // Logic
-    for (let index = 0; index < notes.length; index++) {
-      const element = notes[index];
+    for (let index = 0; index < newNotes.length; index++) {
+      const element = newNotes[index];
       if (element._id === id) {
-        element.title = title;
-        element.description = description;
-        element.tag = tag;
+        newNotes[index].title = title;
+        newNotes[index].description = description;
+        newNotes[index].tag = tag;
+        break;
       }
     }
+    setnotes(newNotes)
   }
     return(
         <noteContext.Provider value={{notes, addNote, editNote, deleteNote, getNotes}}>
