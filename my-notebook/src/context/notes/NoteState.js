@@ -34,20 +34,7 @@ const notesInitial = []
       },
       body: JSON.stringify({title, description, tag}),
     });
-    const json = await response.json(); 
-    console.log(json)
-
-    // Logic
-    const note = {
-      "_id": "",
-      "user": "66707f56a8deb946e39260f1",
-      "title": title,
-      "description": description,
-      "tag": tag,
-      "date": "2024-06-25T18:21:31.336Z",
-      "__v": 0
-    }
-    // const note = await response.json();
+    const note = await response.json(); 
     setnotes(notes.concat(note))
   }
 
