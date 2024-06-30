@@ -37,7 +37,7 @@ const notesInitial = []
 
     // Logic
     const note = {
-      "_id": "667b0aab8877282271c268209e78",
+      "_id": "667b0aab8877282271c268209e7811",
       "user": "66707f56a8deb946e39260f1",
       "title": title,
       "description": description,
@@ -45,12 +45,22 @@ const notesInitial = []
       "date": "2024-06-25T18:21:31.336Z",
       "__v": 0
     }
+    // const note = await response.json();
     setnotes(notes.concat(note))
   }
 
   // Delete a note
-  const deleteNote = (id) =>{
+  const deleteNote = async (id) =>{
     // API calls
+    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY3MDdmNTZhOGRlYjk0NmUzOTI2MGYxIn0sImlhdCI6MTcxODY0ODY2Mn0.TuWniXCgmVt4FAPiI6sloSMI-VKAFlS-KqDTXQh1jo0"
+      }
+    });
+    const json = response.json(); 
+    console.log(json)
 
     // Logic
     console.log("deleted the id " + id)
