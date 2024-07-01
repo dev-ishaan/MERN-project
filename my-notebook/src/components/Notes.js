@@ -29,6 +29,7 @@ const Notes = () => {
   const onChange= (e)=>{
       setNote({...note, [e.target.name]: e.target.value})
   }
+  
   return (
     <>
     <Addnote/>

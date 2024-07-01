@@ -63,6 +63,7 @@ router.post('/login', [
   body('password', 'Password is required').not().isEmpty()
   ], async (req, res) => {
     
+    let success = false
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -73,12 +74,12 @@ router.post('/login', [
       try {
         let user = await Users.findOne({username})
         if(!user) {
-          return res.state(400).json({error: "Please try to login with correct credentials"})
+          return res.status(400).json({success, error: "Please try to login with correct credentials"})
         }
 
         const passwordCompare = await bcrypt.compare(password, user.password)
         if(!passwordCompare){
-          return res.state(400).json({error: "Please try to login with correct credentials"})
+          return res.status(400).json({success, error: "Please try to login with correct credentials"})
           }
 
           // Using id of user to sign it into auth token
@@ -90,8 +91,9 @@ router.post('/login', [
           // Adding JWTSecretKey to make it more secure
           const authToken = jwt.sign(data, JWTSecretKey)
 
+          success = true
           // res.json(user)
-          res.json({authToken})
+          res.json({success, authToken})
 
       } catch (error) {
         console.error(error.message);
