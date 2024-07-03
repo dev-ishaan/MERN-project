@@ -3,7 +3,7 @@ import noteContext from "../context/notes/NoteContext"
 import NoteItem from "./NoteItem";
 import Addnote from "./Addnote";
 
-const Notes = () => {
+const Notes = (props) => {
     const context = useContext(noteContext)
     const {notes, getNotes, editNote} = context
     useEffect(() => {
@@ -24,6 +24,7 @@ const Notes = () => {
       console.log("updating note", note)
       editNote(note.id, note.etitle, note.edescription, note.etag)
       refClose.current.click()
+      props.showAlert("Updated successfully", "success")
   }
 
   const onChange= (e)=>{
@@ -32,7 +33,7 @@ const Notes = () => {
   
   return (
     <>
-    <Addnote/>
+    <Addnote showAlert={props.showAlert}/>
     
       <button type="button" className="btn btn-primary d-none" ref={ref} data-bs-toggle="modal" data-bs-target="#exampleModal">
         Launch demo modal
@@ -78,7 +79,7 @@ const Notes = () => {
       </div>
       {notes.map((notes) => {
         // MongoDB fetch the id in form of "._id"
-        return <NoteItem key = {notes._id} updateNotes={updateNotes} notes={notes}/>
+        return <NoteItem key = {notes._id} updateNotes={updateNotes} showAlert={props.showAlert} notes={notes}/>
       })}
     </div>
     </>

@@ -13,7 +13,7 @@ const NoteItem = (props) => {
             <div className="d-flex justify-content-between">
                 <h5 className="card-title">{notes.title}</h5>
                 <div className="icons">
-                    <i className="fa-solid fa-trash mx-2" onClick={()=>{deleteNote(notes._id)}}></i>
+                    <i className="fa-solid fa-trash mx-2" onClick={()=>{deleteNote(notes._id); props.showAlert("Deleted successfully", "success")}}></i>
                     <i className="fa-solid fa-pen-to-square mx-2" onClick={()=>{updateNotes(notes)}}></i>
                 </div>
             </div>
