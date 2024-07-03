@@ -33,6 +33,7 @@ const Login = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+      <h3 className='text-center my-4'>Login to My-Notebook</h3>
         <div className="form-group my-4">
             <label htmlFor="exampleInputUsername">Username</label>
             <input type="text" className="form-control" id="username" value={credentials.username} onChange={onChange} name="username" aria-describedby="usernameHelp" placeholder="Enter Username"/>
