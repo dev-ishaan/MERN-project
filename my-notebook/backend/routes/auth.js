@@ -15,17 +15,18 @@ router.post('/createuser',[
     body('password', 'Please enter a password with 3 or more characters').isLength({ min: 3 }),
   ], async (req, res) => {
 
+      let success = false
       // If errors exists, then this code is executed
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-          return res.status(400).json({ errors: errors.array() });
+          return res.status(400).json({ success, errors: errors.array() });
         }
 
         // Check whether the user with same username exists?
         try {
           let user = await Users.findOne({ username: req.body.username });
           if (user) {
-              return res.status(400).json({ errors: [{ msg: 'Username already exists' }]
+              return res.status(400).json({success, errors: [{ msg: 'Username already exists' }]
                   })
               }
 
@@ -48,8 +49,9 @@ router.post('/createuser',[
           // Adding JWTSecretKey to make it more secure
           const authToken = jwt.sign(data, JWTSecretKey)
 
+          success= true
           // res.json(user)
-          res.json({authToken})
+          res.json({success, authToken})
         }
         catch(error){
           console.error(error.message);
