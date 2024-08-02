@@ -16,7 +16,7 @@ import Signup from './components/Signup';
 function App() {
   const [alert, setAlert]= useState(false);
 
-  const showAlert= (message, type) =>{
+  const showAlert= (message, type) => {
     setAlert({
       msg: message,
       type: type
@@ -45,5 +45,4 @@ function App() {
     </>
   );
 }
-
 export default App;
